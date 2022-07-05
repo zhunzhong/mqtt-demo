@@ -1,11 +1,13 @@
 package com.zhunzhong.demo.config;
 
 
-import com.zhunzhong.demo.common.Constants;
+
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Configuration;
+
+import com.zhunzhong.demo.common.Constants;
 
 /**
  * @author zhunzhong
