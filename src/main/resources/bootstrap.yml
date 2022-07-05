@@ -1,0 +1,64 @@
+server:
+  port: 9898
+  tomcat:
+    basedir: ./temp/
+
+spring:
+  application:
+    name: mqtt-demo
+  servlet:
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 1000MB
+  cloud:
+    discovery:
+      metadata:
+        env: 111
+    nacos:
+      username: nacos
+      password: nacos
+      discovery:
+        #server-addr: 172.31.200.12:8847,172.31.200.12:8848,172.31.200.11:8848
+        #server-addr: 127.0.0.1:8848
+        server-addr: 127.0.0.1:8848
+        service: ${spring.application.name}
+        group: DEFAULT_GROUP
+        namespace:
+        enabled: true
+      config:
+        group: DEFAULT_GROUP
+        namespace:
+        #server-addr: 172.31.200.12:8847,172.31.200.12:8848,172.31.200.11:8848
+        #server-addr: 127.0.0.1:8848
+        server-addr: 127.0.0.1:8848
+        file-extension: yml
+        name: ${spring.application.name}
+        enabled: true
+
+# mybatis-plus
+mybatis-plus:
+  mapper-locations: classpath://mybatis/mapper/*.xml
+  typeAliasesPackage: com.iflytek.zhunzhong.demo.pojo.entity
+  global-config.banner: false
+  #global-config.db-config.id-type: ASSIGN_ID
+
+mqtt:
+  emqx:
+    broker: tcp://127.0.0.1:1883
+    pubClientId: emqx_pub_test
+    subClientId: emqx_sub_test
+    pubTopic: testtopic/1
+    subTopic: testtopic/#
+    userName: test
+    passWord: test
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+

@@ -1,0 +1,121 @@
+{
+	"info": {
+		"_postman_id": "e3c6d7c1-e2fc-40b6-a5ee-dde6dac7c8a6",
+		"name": "MQTT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "EMQX",
+			"item": [
+				{
+					"name": "发布者-建立连接",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9898/emqx/pub/connect",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9898",
+							"path": [
+								"emqx",
+								"pub",
+								"connect"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "订阅者-建立连接",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9898/emqx/sub/connect",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9898",
+							"path": [
+								"emqx",
+								"sub",
+								"connect"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "消息订阅",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9898/emqx/sub/message",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9898",
+							"path": [
+								"emqx",
+								"sub",
+								"message"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "消息发布",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "content",
+									"value": "测试2=============================3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:9898/emqx/pub/message",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9898",
+							"path": [
+								"emqx",
+								"pub",
+								"message"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
