@@ -24,6 +24,8 @@ public class OnMessageCallback implements MqttCallback {
     @Override
     public void messageArrived(String topic, MqttMessage message) throws Exception {
         // subscribe后得到的消息会执行到这里面
+        //Thread.sleep(1000);
+        logger.info("当前线程id:{}\t线程名:{}", Thread.currentThread().getId(),Thread.currentThread().getName());
         logger.info("接收消息主题: {}", topic);
         logger.info("接收消息Qos: {}", message.getQos());
         logger.info("接收消息内容: {}", new String(message.getPayload()));

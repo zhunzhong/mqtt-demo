@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assembly>
+	<id>package</id>
+	<formats>
+		<format>zip</format>
+		<format>dir</format>
+	</formats>
+	<includeBaseDirectory>false</includeBaseDirectory>
+	<fileSets>
+		<fileSet>
+			<directory>target/appassembler</directory>
+			<outputDirectory>/</outputDirectory>
+			<excludes>
+				<exclude>**/spring-boot-devtools*</exclude>
+			</excludes>
+		</fileSet>
+		<fileSet>
+			<directory>src/main/resources</directory>
+			<outputDirectory>/conf</outputDirectory>
+			<excludes>
+				<exclude>*.yml</exclude>
+				<exclude>logback.xml</exclude>
+				<exclude>*.properties</exclude>
+			</excludes>
+		</fileSet>
+		<fileSet>
+			<directory>src/main/bin</directory>
+			<outputDirectory>/bin</outputDirectory>
+		</fileSet>
+	</fileSets>
+</assembly>
