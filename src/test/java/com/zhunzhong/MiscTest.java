@@ -1,5 +1,6 @@
 package com.zhunzhong;
 
+import java.io.File;
 import java.text.MessageFormat;
 import java.util.Date;
 import org.junit.Test;
@@ -23,5 +24,11 @@ public class MiscTest {
         //System.out.println(Integer.MAX_VALUE);
 
         System.out.println(Integer.toBinaryString(-10));
+    }
+
+    @Test
+    public void testFile(){
+        File f=new File("aa\\bb");
+        System.out.println(f.getPath());
     }
 }

@@ -3,6 +3,7 @@ package com.zhunzhong.demo.kafka.consumer;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.stereotype.Component;
@@ -13,6 +14,7 @@ import java.util.concurrent.Executors;
 
 @Component
 @Slf4j
+@ConditionalOnProperty(prefix = "customer.kafka.consumer.listener.enable", name = "topic-test1", havingValue = "true")
 public class TestConsumer {
 
 //    @KafkaListener(topics = {"topic-test1"}, groupId = "test-consumer-group",

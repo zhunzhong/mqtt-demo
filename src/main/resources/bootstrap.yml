@@ -35,6 +35,7 @@ spring:
         name: ${spring.application.name}
         enabled: true
   kafka:
+    enabled: false
     bootstrap-servers: 127.0.0.1:9092
     producer:
       # 发生错误后，消息重发的次数。
@@ -74,6 +75,13 @@ spring:
       #listner负责ack，每调用一次，就立即commit
       ack-mode: manual_immediate
       missing-topics-fatal: false
+
+customer:
+  kafka:
+    consumer:
+      listener:
+        enable:
+          topic-test1: false
 
 # mybatis-plus
 mybatis-plus:

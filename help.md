@@ -43,3 +43,10 @@ kafka-topics   --alter --partitions 2  --topic topic-test1 --bootstrap-server 1
 ```
 
 
+
+查看所有消费组
+
+```
+kafka-consumer-groups  --list   --bootstrap-server 127.0.0.1:9092
+```
+
