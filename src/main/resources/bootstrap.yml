@@ -95,8 +95,8 @@ mqtt:
     broker: tcp://127.0.0.1:1883
     pubClientId: emqx_pub_test
     subClientId: emqx_sub_test
-    pubTopic: testtopic/1
-    subTopic: testtopic/#
+    pubTopic: /testtopic/1
+    subTopic: /testtopic/#
     userName: test
     passWord: test
 
