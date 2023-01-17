@@ -6,6 +6,14 @@ server:
 spring:
   application:
     name: mqtt-demo
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/catl-swap?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8&useSSL=false
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    username: root
+    password: root
+  liquibase:
+    enabled: false
   servlet:
     multipart:
       max-file-size: 500MB
@@ -89,6 +97,8 @@ mybatis-plus:
   typeAliasesPackage: com.iflytek.zhunzhong.demo.pojo.entity
   global-config.banner: false
   #global-config.db-config.id-type: ASSIGN_ID
+
+
 
 mqtt:
   emqx:

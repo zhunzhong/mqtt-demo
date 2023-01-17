@@ -15,6 +15,11 @@ public class TestEventConfig {
         log.info("订单建立，待支付");
     }
 
+    @OnTransition(target = "DONE")
+    public void done() {
+        log.info("done***************");
+    }
+
     @OnTransition(source = "UNPAID", target = "WAITING_FOR_RECEIVE")
     public void pay() {
         log.info("用户完成支付，待收货");
@@ -24,4 +29,6 @@ public class TestEventConfig {
     public void receive() {
         log.info("用户已收货，订单完成");
     }
+
+
 }
