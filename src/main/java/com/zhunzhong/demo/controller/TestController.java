@@ -12,8 +12,8 @@ import com.zhunzhong.demo.common.EventEnum;
 import com.zhunzhong.demo.pojo.entity.FaultDict;
 import com.zhunzhong.demo.pojo.entity.RollingDoorDto;
 import com.zhunzhong.demo.pojo.entity.VehicleInfo;
-import com.zhunzhong.demo.statemachine.TestEvents;
-import com.zhunzhong.demo.statemachine.TestStates;
+import com.zhunzhong.demo.statemachine1.TestEvents;
+import com.zhunzhong.demo.statemachine1.TestStates;
 import com.zhunzhong.demo.task.ThreadPoolTask;
 import com.zhunzhong.demo.util.SpringUtils;
 

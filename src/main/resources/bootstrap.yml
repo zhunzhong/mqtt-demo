@@ -32,7 +32,7 @@ spring:
         service: ${spring.application.name}
         group: DEFAULT_GROUP
         namespace:
-        enabled: true
+        enabled: false
       config:
         group: DEFAULT_GROUP
         namespace:
@@ -41,7 +41,7 @@ spring:
         server-addr: 127.0.0.1:8848
         file-extension: yml
         name: ${spring.application.name}
-        enabled: true
+        enabled: false
   kafka:
     enabled: false
     bootstrap-servers: 127.0.0.1:9092

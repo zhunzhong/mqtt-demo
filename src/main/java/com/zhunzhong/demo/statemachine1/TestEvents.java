@@ -1,4 +1,4 @@
-package com.zhunzhong.demo.statemachine;
+package com.zhunzhong.demo.statemachine1;
 
 public enum TestEvents {
     PAY,        // 支付

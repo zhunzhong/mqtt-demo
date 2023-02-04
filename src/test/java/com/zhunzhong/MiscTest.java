@@ -11,6 +11,12 @@ import cn.hutool.core.util.ByteUtil;
 import cn.hutool.core.util.HexUtil;
 import com.zhunzhong.demo.pojo.entity.User;
 import lombok.extern.slf4j.Slf4j;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+import cn.hutool.core.date.DateUnit;
+import cn.hutool.core.date.DateUtil;
 import org.junit.Test;
 
 /**
@@ -20,6 +26,43 @@ import org.junit.Test;
  */
 @Slf4j
 public class MiscTest {
+
+    public enum WaitSignal {
+
+        //手工处理信号，自由度超时继续
+        Freedom_Timeout_Continue,
+
+        //手工处理信号，车机自检继续
+        Vehicle_Inspection_Continue,
+
+    }
+
+    @Test
+    public void test1() {
+        System.out.println(WaitSignal.Freedom_Timeout_Continue.name());
+    }
+    public static ScheduledExecutorService scheduledService = Executors.newScheduledThreadPool(50);
+
+    @Test
+    public void testThread() {
+        scheduledService.scheduleWithFixedDelay(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println(DateUtil.now() + "==========" + Thread.currentThread().getName());
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }, 0, 1000, TimeUnit.MILLISECONDS);
+
+        try {
+            Thread.sleep(1000 * 60);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @Test
     public void testLombok() {
