@@ -93,6 +93,11 @@
     </dependencyManagement>
     <dependencies>
         <dependency>
+            <groupId>com.taosdata.jdbc</groupId>
+            <artifactId>taos-jdbcdriver</artifactId>
+            <version>3.0.4</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.groovy</groupId>
             <artifactId>groovy</artifactId>
             <version>4.0.7</version>
