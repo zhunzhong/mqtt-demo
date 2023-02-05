@@ -7,6 +7,7 @@ import cn.hutool.core.convert.Convert;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.text.CharSequenceUtil;
+import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.core.util.ZipUtil;
 import cn.hutool.extra.pinyin.PinyinUtil;
@@ -26,6 +27,13 @@ import java.util.*;
  * @description: todo
  */
 public class HutoolTest {
+
+    @Test
+    public void testRandom() {
+        for (int i = 0; i < 100; i++) {
+            System.out.println(RandomUtil.randomDouble(10));
+        }
+    }
 
     @Test
     public void testCleanBlank() {
@@ -67,16 +75,16 @@ public class HutoolTest {
     }
 
     @Test
-    public void objectCompare(){
+    public void objectCompare() {
         User user1 = new User();
         user1.setUserName("name1");
 
         User user2 = new User();
         user1.setUserName("name2");
 
-        if(user1.equals(user2)){
+        if (user1.equals(user2)) {
             System.out.println("equal");
-        }else{
+        } else {
             System.out.println("not equal");
         }
     }
@@ -87,26 +95,25 @@ public class HutoolTest {
         User user = new User();
         user.setUserName("zz");
         user.setPassWord("tt");
-        List<String> list=new ArrayList<>();
+        List<String> list = new ArrayList<>();
         list.add("zz");
         list.add("tt");
         user.setData(list);
 
-        String a="sss";
-        Object ao=JSON.toJSONString(a);
-        String a1=(String) ao;
+        String a = "sss";
+        Object ao = JSON.toJSONString(a);
+        String a1 = (String) ao;
         System.out.println(a1);
 
-        for(int i=0;i<10;i++) {
+        for (int i = 0; i < 10; i++) {
             long startTime = System.currentTimeMillis();
             String data = JSON.toJSONString(user);
             Object oo = JSON.parseObject(data);
 
-            User newUser = (User)oo;
+            User newUser = (User) oo;
             System.out.println(newUser.getData().get(0));
             System.out.println("耗时：" + (System.currentTimeMillis() - startTime) + "ms");
         }
-
 
 
     }

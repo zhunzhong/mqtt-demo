@@ -34,14 +34,15 @@ public class DataBaseMonitor {
     }
 
     public void prepareDatabase() throws SQLException {
-        stmt.execute("DROP DATABASE IF EXISTS test");
-        stmt.execute("CREATE DATABASE test");
-        stmt.execute("CREATE STABLE test.meters (ts TIMESTAMP, current FLOAT, voltage INT, phase FLOAT) TAGS (location BINARY(64), groupId INT)");
+        //stmt.execute("DROP DATABASE IF EXISTS test");
+        stmt.execute(String.format("CREATE DATABASE IF NOT EXISTS %s", TaoConstants.dbName));
+        stmt.execute(String.format("CREATE STABLE IF NOT EXISTS %s.%s (ts TIMESTAMP, current DOUBLE, voltage DOUBLE, phase DOUBLE) TAGS (location BINARY(64), groupId INT)"
+                , TaoConstants.dbName, TaoConstants.sTableName));
     }
 
     public Long count() throws SQLException {
         if (!stmt.isClosed()) {
-            ResultSet result = stmt.executeQuery("SELECT count(*) from test.meters");
+            ResultSet result = stmt.executeQuery(String.format("SELECT count(*) from %s.%s", TaoConstants.dbName, TaoConstants.sTableName));
             result.next();
             return result.getLong(1);
         }

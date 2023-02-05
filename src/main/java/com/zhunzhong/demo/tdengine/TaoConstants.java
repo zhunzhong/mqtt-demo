@@ -5,7 +5,12 @@ package com.zhunzhong.demo.tdengine;
  * @date: 2023-02-04 17:18
  * @description: todo
  */
-public interface TaoConstants {
+public class TaoConstants {
 
-    String jdbcURL = "jdbc:TAOS://192.168.2.38:6030?user=root&password=taosdata";
+    static String jdbcURL = "jdbc:TAOS://192.168.254.128:6030?user=root&password=taosdata";
+
+    static String dbName = "test";
+    static String sTableName = "meters";
+
+
 }

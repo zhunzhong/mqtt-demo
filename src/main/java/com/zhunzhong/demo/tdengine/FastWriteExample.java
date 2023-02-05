@@ -31,6 +31,11 @@ public class FastWriteExample {
         int writeTaskCount = args.length > 1 ? Integer.parseInt(args[1]) : 3;
         int tableCount = args.length > 2 ? Integer.parseInt(args[2]) : 1000;
         int maxBatchSize = args.length > 3 ? Integer.parseInt(args[3]) : 3000;
+        String dbName = args.length > 4 ? args[4] : "test";
+        String sTableName = args.length > 5 ? args[5] : "meters";
+
+        TaoConstants.dbName = dbName;
+        TaoConstants.sTableName = sTableName;
 
         logger.info("readTaskCount={}, writeTaskCount={} tableCount={} maxBatchSize={}",
                 readTaskCount, writeTaskCount, tableCount, maxBatchSize);

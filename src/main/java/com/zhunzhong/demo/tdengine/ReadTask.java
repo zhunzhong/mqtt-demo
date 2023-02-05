@@ -43,6 +43,7 @@ class ReadTask implements Runnable {
         try {
             while (it.hasNext() && active) {
                 String line = it.next();
+                //System.out.println(line);
                 int queueId = getQueueId(line);
                 taskQueues.get(queueId).put(line);
             }

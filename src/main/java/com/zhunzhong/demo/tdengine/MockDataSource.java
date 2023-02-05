@@ -1,5 +1,7 @@
 package com.zhunzhong.demo.tdengine;
 
+import cn.hutool.core.util.RandomUtil;
+
 import java.util.Iterator;
 
 /**
@@ -42,9 +44,9 @@ class MockDataSource implements Iterator {
         int groupId = currentTbId % 5 == 0 ? currentTbId / 5 : currentTbId / 5 + 1;
         StringBuilder sb = new StringBuilder(tbNamePrefix + "_" + currentTbId + ","); // tbName
         sb.append(ts).append(','); // ts
-        sb.append(current[currentRow % 5]).append(','); // current
-        sb.append(voltage[currentRow % 5]).append(','); // voltage
-        sb.append(phase[currentRow % 5]).append(','); // phase
+        sb.append(current[currentRow % 5] + RandomUtil.randomDouble(10)).append(','); // current
+        sb.append(voltage[currentRow % 5] + RandomUtil.randomDouble(10)).append(','); // voltage
+        sb.append(phase[currentRow % 5] + RandomUtil.randomDouble(10)).append(','); // phase
         sb.append(location[currentRow % 5]).append(','); // location
         sb.append(groupId); // groupID
 

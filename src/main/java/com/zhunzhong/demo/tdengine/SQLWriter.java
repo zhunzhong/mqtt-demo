@@ -34,8 +34,9 @@ public class SQLWriter {
 
     /**
      * Maximum SQL length.
+     * 1MB
      */
-    private int maxSQLLength;
+    private int maxSQLLength = 1024 * 1024 / 2;
 
     /**
      * Map from table name to column values. For example:
@@ -73,7 +74,7 @@ public class SQLWriter {
     public void init() throws SQLException {
         conn = getConnection();
         stmt = conn.createStatement();
-        stmt.execute("use test");
+        stmt.execute(String.format("use %s", TaoConstants.dbName));
         ResultSet rs = stmt.executeQuery("show variables");
         while (rs.next()) {
             String configName = rs.getString(1);
@@ -93,7 +94,7 @@ public class SQLWriter {
     public void processLine(String line) throws SQLException {
         bufferedCount += 1;
         int firstComma = line.indexOf(',');
-        String tbName = line.substring(0, firstComma);
+        String tbName = TaoConstants.sTableName + line.substring(0, firstComma);
         int lastComma = line.lastIndexOf(',');
         int secondLastComma = line.lastIndexOf(',', lastComma - 1);
         String value = "(" + line.substring(firstComma + 1, secondLastComma) + ") ";
@@ -138,12 +139,12 @@ public class SQLWriter {
 
     private void executeSQL(String sql) throws SQLException {
         try {
-            logger.info("executeSQL :{}",sql);
+            logger.info("executeSQL :{}", sql);
             stmt.executeUpdate(sql);
         } catch (SQLException e) {
             // convert to error code defined in taoserror.h
             int errorCode = e.getErrorCode() & 0xffff;
-            if (errorCode == 0x362 || errorCode == 0x218) {
+            if (errorCode == 0x362 || errorCode == 0x218 || errorCode == 0x2603) {
                 // Table does not exist
                 createTables();
                 executeSQL(sql);
@@ -167,7 +168,8 @@ public class SQLWriter {
         StringBuilder sb = new StringBuilder("CREATE TABLE ");
         for (String tbName : tbValues.keySet()) {
             String tagValues = tbTags.get(tbName);
-            sb.append("IF NOT EXISTS ").append(tbName).append(" USING meters TAGS ").append(tagValues).append(" ");
+            sb.append("IF NOT EXISTS ").append(tbName).append(" USING ")
+                    .append(TaoConstants.sTableName).append(" TAGS ").append(tagValues).append(" ");
         }
         String sql = sb.toString();
         try {
