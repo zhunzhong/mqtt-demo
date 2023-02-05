@@ -7,8 +7,8 @@ spring:
   application:
     name: mqtt-demo
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/catl-swap?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8&useSSL=false
-    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.zaxxer.hikari.HikariDataSource
     username: root
     password: root
@@ -98,7 +98,8 @@ mybatis-plus:
   global-config.banner: false
   #global-config.db-config.id-type: ASSIGN_ID
 
-
+groovy:
+  classPath: xx
 
 mqtt:
   emqx:

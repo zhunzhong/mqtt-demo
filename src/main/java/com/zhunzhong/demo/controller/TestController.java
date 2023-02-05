@@ -9,6 +9,7 @@ import com.alibaba.excel.read.listener.ReadListener;
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Maps;
 import com.zhunzhong.demo.common.EventEnum;
+import com.zhunzhong.demo.mysql.SaveDataService;
 import com.zhunzhong.demo.pojo.entity.FaultDict;
 import com.zhunzhong.demo.pojo.entity.RollingDoorDto;
 import com.zhunzhong.demo.pojo.entity.VehicleInfo;
@@ -58,6 +59,17 @@ public class TestController {
 
     @Autowired
     private ThreadPoolTask threadPoolTask;
+
+    @Autowired
+    private SaveDataService saveDataService;
+
+    @GetMapping("writeMysql")
+    public String writeMysql() {
+        new Thread(() -> {
+            saveDataService.writeData();
+        }).start();
+        return "ok";
+    }
 
     @GetMapping("importBigFile2")
     public String readBigFile2() throws IOException {

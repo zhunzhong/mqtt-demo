@@ -466,7 +466,7 @@
                     <programs>
                         <program>
                             <!-- 启动的主class -->
-                            <mainClass>com.zhunzhong.demo.tdengine.FastWriteExample</mainClass>
+                            <mainClass>com.zhunzhong.MQTTDemoApplication</mainClass>
                             <id>main</id>
                         </program>
                     </programs>
