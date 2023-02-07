@@ -32,7 +32,7 @@
         <java.version>1.8</java.version>
         <jjwt.version>0.11.2</jjwt.version>
         <spring-statemachine.version>3.2.0</spring-statemachine.version>
-<!--        <spring-statemachine.version>2.5.0</spring-statemachine.version>-->
+        <!--        <spring-statemachine.version>2.5.0</spring-statemachine.version>-->
         <!-- 文件拷贝时的编码 -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -102,6 +102,19 @@
     </dependencyManagement>
     <dependencies>
         <dependency>
+            <groupId>com.clickhouse</groupId>
+            <artifactId>clickhouse-jdbc</artifactId>
+            <version>0.4.0</version>
+<!--            &lt;!&ndash; use uber jar with all dependencies included, change classifier to http for smaller jar &ndash;&gt;-->
+<!--            <classifier>all</classifier>-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>*</groupId>-->
+<!--                    <artifactId>*</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+        </dependency>
+        <dependency>
             <groupId>com.taosdata.jdbc</groupId>
             <artifactId>taos-jdbcdriver</artifactId>
             <version>3.0.4</version>
@@ -158,11 +171,11 @@
             <artifactId>squirrel-foundation</artifactId>
             <version>0.3.9</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.spring4all</groupId>-->
-<!--            <artifactId>swagger-spring-boot-starter</artifactId>-->
-<!--            <version>1.7.0.RELEASE</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.spring4all</groupId>-->
+        <!--            <artifactId>swagger-spring-boot-starter</artifactId>-->
+        <!--            <version>1.7.0.RELEASE</version>-->
+        <!--        </dependency>-->
         <!-- knife4j （swagger增强API接口文档） -->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
@@ -466,7 +479,8 @@
                     <programs>
                         <program>
                             <!-- 启动的主class -->
-                            <mainClass>com.zhunzhong.MQTTDemoApplication</mainClass>
+                            <!--                            <mainClass>com.zhunzhong.MQTTDemoApplication</mainClass>-->
+                            <mainClass>com.zhunzhong.demo.tdengine.FastWriteExample</mainClass>
                             <id>main</id>
                         </program>
                     </programs>
